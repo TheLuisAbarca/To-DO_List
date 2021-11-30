@@ -32,7 +32,7 @@ const tasks = [
 
  tasks.forEach(task => {
      const taskItem = document.createElement('li');
-     taskItem.className = 'task-item row p-2 justify-content-center align-items-center';
+     taskItem.className = 'task-item row p-2 justify-content-center align-items-center border-top border-1';
      taskItem.innerHTML = `
          <input class="col-1" type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''}>
          <span class="col-9 task-description">${task.description}</span>
