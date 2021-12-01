@@ -6,7 +6,9 @@ import '@fortawesome/fontawesome-free/js/brands';
 import '../css/bootstrap.min.css';
 import '../css/style.css';
 
-const tasks = [
+import StatusCompleted from './statusModule';
+
+const firstTasks = [
   {
     index: 1,
     description: 'Go to the store',
@@ -28,17 +30,32 @@ const tasks = [
     completed: false,
   },
 ];
-const taskList = document.querySelector('#task-list');
 
-tasks.forEach((task) => {
+let tasks = JSON.parse(localStorage.getItem('To-Do_Tasks')) || [...firstTasks];
+
+/* MAYBE IS TIME TO THINK ON CREATE FUNCTIONS SPECIFICALLY FOR UI Purposes and make them a UI class*/
+/**
+ * 
+ * @description - UI function to render the tasks
+ */
+const ItemsFirstDisplay = () => {
+  const taskList = document.querySelector('#task-list');
+
+  tasks.forEach((task, index) => {
   const taskItem = document.createElement('li');
+  task.index = index;
+  taskItem.id = `task-${task.index}`;
   taskItem.className = 'task-item row p-2 justify-content-center align-items-center border-top border-1';
   taskItem.innerHTML = `
-         <input class="col-1" type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''}>
+         <input class="col-1 task-checkbox" type="checkbox" ${task.completed ? 'checked' : ''}>
          <span class="col-9 task-description">${task.description}</span>
          <button class="col-2 text-muted option-Task">
             <i class="fas fa-ellipsis-v"></i>
          </button>
      `;
   taskList.appendChild(taskItem);
-});
+  });
+  StatusCompleted.completedTDList(tasks);
+};
+
+ItemsFirstDisplay();
