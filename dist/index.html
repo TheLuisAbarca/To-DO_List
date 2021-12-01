@@ -6,19 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-DO List</title>
 <script defer src="index.bundle.js"></script></head>
-<body>
-  <header>
-    <h1>To-Do List</h1>
+<body class="container">
+  <header class="row">
   </header>
-  <main>
-    <section>
-      <form action="index.php" method="post">
-        <input type="text" name="task" placeholder="Add a task">
-        <input type="submit" value="Add Task">
-      </form>
-      <ul id="task-list">
-
-      </ul>
+  <main class="row mt-4">
+    <section class="col-12">
+      <div class="card card-white">
+        <div class="card-body">
+            <div class="row pt-2 pb-2 justify-content-center align-items-center">
+                <h5 class="col-10">Today's To Do</h5>
+                <button class="col-2 reload text-muted">
+                    <i class="fas fa-sync"></i>   
+                </button>
+            </div>
+            <div class="row pt-2 pb-2 border-top border-1 justify-content-center align-items-center">
+                <input id="addTask" type="text" name="task" class="col-10" placeholder="Add to your list...">
+                <button class="col-2 add-Task text-muted">
+                    <i class="fas fa-level-down-alt fa-rotate-90"></i>
+                </button>
+            </div>
+            <ul id="task-list" class="">
+            </ul>
+            <div id="clr" class="row pt-2 pb-2 justify-content-center align align-items-center text-muted">
+                Clear all completed
+            </div>
+        </div>
+      </div>
     </section>
   </main>
 </body>
