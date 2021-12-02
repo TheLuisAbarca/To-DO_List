@@ -5,7 +5,8 @@ function GetFromLocalStorage() {
     if (tasks) {
         return tasks;
     }
-    return firstTasks;
+    //return firstTasks;
+    return [];
 }
 
 function SetOnLocalStorage(tasks) {
