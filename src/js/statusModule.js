@@ -1,17 +1,14 @@
+import {SetOnLocalStorage} from './LocalStorage.js';
+
 class StatusCompleted {
   static checked(obj) {
     if (obj.chkbxs.checked) {
       obj.list[obj.id].completed = true;
-      this.LSUpdate(obj.list);
+      SetOnLocalStorage(obj.list);
     } else {
       obj.list[obj.id].completed = false;
-      this.LSUpdate(obj.list);
+      SetOnLocalStorage(obj.list);
     }
-  }
-
-  static LSUpdate(list) {
-    const lsData = JSON.stringify(list);
-    localStorage.setItem('To-Do_Tasks', lsData);
   }
 
   static completedTDList(list) {
@@ -23,4 +20,4 @@ class StatusCompleted {
   }
 }
 
-module.exports = StatusCompleted;
+export default StatusCompleted;

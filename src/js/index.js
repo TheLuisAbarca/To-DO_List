@@ -6,32 +6,10 @@ import '@fortawesome/fontawesome-free/js/brands';
 import '../css/bootstrap.min.css';
 import '../css/style.css';
 
+import { GetFromLocalStorage } from './LocalStorage';
 import StatusCompleted from './statusModule';
 
-const firstTasks = [
-  {
-    index: 1,
-    description: 'Go to the store',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'Finish my screencast',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'Clean the house',
-    completed: true,
-  },
-  {
-    index: 4,
-    description: 'Mow the lawn',
-    completed: false,
-  },
-];
-
-const tasks = JSON.parse(localStorage.getItem('To-Do_Tasks')) || [...firstTasks];
+const tasks = GetFromLocalStorage();
 
 /* MAYBE IS TIME TO THINK ON CREATE FUNCTIONS SPECIFICALLY FOR UI Purposes and
 make them a UI class */
