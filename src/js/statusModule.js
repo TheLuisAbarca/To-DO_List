@@ -1,4 +1,4 @@
-import {SetOnLocalStorage} from './LocalStorage.js';
+import {SetOnLocalStorage, GetFromLocalStorage} from './LocalStorage.js';
 
 class StatusCompleted {
   static checked(obj) {
@@ -11,13 +11,12 @@ class StatusCompleted {
     }
   }
 
-  static completedTDList(list) {
-    this.checkboxes = document.querySelectorAll('.task-checkbox');
-    this.checkboxes.forEach((checkbox, index) => {
-      const baseObj = { list, chkbxs: checkbox, id: index };
-      checkbox.addEventListener('change', () => this.checked(baseObj));
-    });
-  }
+  static completedTDList(taskItem, index) {
+    const item = taskItem.querySelector('.task-checkbox')
+    const list = GetFromLocalStorage();
+    const baseObj = { list, chkbxs: item, id: index };
+    item.addEventListener('change', () => this.checked(baseObj));
+  }  
 }
 
 export default StatusCompleted;

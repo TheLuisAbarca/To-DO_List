@@ -6,17 +6,14 @@ import '@fortawesome/fontawesome-free/js/brands';
 import '../css/bootstrap.min.css';
 import '../css/style.css';
 
+import { renderAllTasks } from './render';
+/*
 import { GetFromLocalStorage } from './LocalStorage';
 import StatusCompleted from './statusModule';
 
 const tasks = GetFromLocalStorage();
 
-/* MAYBE IS TIME TO THINK ON CREATE FUNCTIONS SPECIFICALLY FOR UI Purposes and
-make them a UI class */
-/**
- *
- * @description - UI function to render the tasks
- */
+
 const ItemsFirstDisplay = () => {
   const taskList = document.querySelector('#task-list');
 
@@ -38,3 +35,5 @@ const ItemsFirstDisplay = () => {
 };
 
 ItemsFirstDisplay();
+*/
+renderAllTasks();

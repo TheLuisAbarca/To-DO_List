@@ -20,4 +20,4 @@ const firstTasks = [
       completed: false,
     },
 ];
-module.export = firstTasks;
+export {firstTasks};
