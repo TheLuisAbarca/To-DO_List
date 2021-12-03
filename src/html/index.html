@@ -21,14 +21,17 @@
             </div>
             <div class="row pt-2 pb-2 border-top border-1 justify-content-center align-items-center">
                 <input id="addTask" type="text" name="task" class="col-10" placeholder="Add to your list...">
-                <button class="col-2 add-Task text-muted">
+                <button id="btnaddTask" class="col-2 add-Task text-muted">
                     <i class="fas fa-level-down-alt fa-rotate-90"></i>
                 </button>
             </div>
-            <ul id="task-list" class="">
+            <ul id="task-list" class="task-list">
             </ul>
             <div id="clr" class="row pt-2 pb-2 justify-content-center align align-items-center text-muted">
-                Clear all completed
+              <div class="col-12 d-flex justify-content-center align-items-center">
+                <i class="fas fa-trash-alt"> </i>
+                 Clear all completed
+              </div>
             </div>
         </div>
       </div>

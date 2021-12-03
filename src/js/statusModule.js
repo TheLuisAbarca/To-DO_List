@@ -1,26 +1,22 @@
+import { SetOnLocalStorage, GetFromLocalStorage } from './LocalStorage.js';
+
 class StatusCompleted {
   static checked(obj) {
+    const list = GetFromLocalStorage();
     if (obj.chkbxs.checked) {
-      obj.list[obj.id].completed = true;
-      this.LSUpdate(obj.list);
+      list[obj.id].completed = true;
+      SetOnLocalStorage(list);
     } else {
-      obj.list[obj.id].completed = false;
-      this.LSUpdate(obj.list);
+      list[obj.id].completed = false;
+      SetOnLocalStorage(list);
     }
   }
 
-  static LSUpdate(list) {
-    const lsData = JSON.stringify(list);
-    localStorage.setItem('To-Do_Tasks', lsData);
-  }
-
-  static completedTDList(list) {
-    this.checkboxes = document.querySelectorAll('.task-checkbox');
-    this.checkboxes.forEach((checkbox, index) => {
-      const baseObj = { list, chkbxs: checkbox, id: index };
-      checkbox.addEventListener('change', () => this.checked(baseObj));
-    });
+  static completedTDList(taskItem, index) {
+    const item = taskItem.querySelector('.task-checkbox');
+    const baseObj = { chkbxs: item, id: index };
+    item.addEventListener('change', () => this.checked(baseObj));
   }
 }
 
-module.exports = StatusCompleted;
+export default StatusCompleted;
