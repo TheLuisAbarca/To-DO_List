@@ -53,4 +53,16 @@ function editTaskDesc() {
     });
 }
 
-export { addListTask, editTaskDesc };
+function clearAllCompleted() {
+  const taskList = document.getElementById('task-list');
+  const clearItems = document.getElementById('clr');
+  clearItems.addEventListener('click', () => {
+    let tasks1 = GetFromLocalStorage();
+    tasks = tasks1.filter((task) => !task.completed);
+    taskList.innerHTML = '';
+    SetOnLocalStorage(tasks);
+    renderAllTasks();
+  });
+};
+
+export { addListTask, editTaskDesc, clearAllCompleted };

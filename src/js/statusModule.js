@@ -2,19 +2,19 @@ import {SetOnLocalStorage, GetFromLocalStorage} from './LocalStorage.js';
 
 class StatusCompleted {
   static checked(obj) {
+    const list = GetFromLocalStorage();
     if (obj.chkbxs.checked) {
-      obj.list[obj.id].completed = true;
-      SetOnLocalStorage(obj.list);
+      list[obj.id].completed = true;
+      SetOnLocalStorage(list);
     } else {
-      obj.list[obj.id].completed = false;
-      SetOnLocalStorage(obj.list);
+      list[obj.id].completed = false;
+      SetOnLocalStorage(list);
     }
   }
 
   static completedTDList(taskItem, index) {
     const item = taskItem.querySelector('.task-checkbox')
-    const list = GetFromLocalStorage();
-    const baseObj = { list, chkbxs: item, id: index };
+    const baseObj = { chkbxs: item, id: index };
     item.addEventListener('change', () => this.checked(baseObj));
   }  
 }
