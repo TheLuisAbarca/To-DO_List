@@ -25,8 +25,11 @@ function renderTask(task, index) {
   taskItem.innerHTML = `
          <input class="col-1 task-checkbox" type="checkbox" ${task.completed ? 'checked' : ''}>
          <input class="text col-9 task-description text-${task.index}" type="text" value ="${task.description}">
-         <button class="col-2 text-muted option-Task">
-            <i class="fas fa-ellipsis-v"></i>
+         <button class="col-1 text-muted delete-Task">
+          <i class="fas fa-trash-alt"> </i>
+         </button>
+         <button class="col-1 text-muted option-Task">
+          <i class="fas fa-arrows-alt"></i>
          </button>
      `;
   StatusCompleted.completedTDList(taskItem, index);

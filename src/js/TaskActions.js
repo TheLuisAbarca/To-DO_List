@@ -54,7 +54,7 @@ function editTaskDesc() {
 // eslint-disable-next-line no-unused-vars
 function deleteTask() {
   const taskList = document.getElementById('task-list');
-  const deleteButtons = document.querySelectorAll('.delete');
+  const deleteButtons = document.querySelectorAll('.delete-Task');
   deleteButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
       tasks.splice(index, 1);
@@ -77,4 +77,4 @@ function clearAllCompleted() {
   });
 }
 
-export { addListTask, editTaskDesc, clearAllCompleted };
+export { addListTask, editTaskDesc, clearAllCompleted, deleteTask };
