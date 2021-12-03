@@ -64,3 +64,12 @@ li.row {
 .text:focus {
   outline: none;
 }
+
+#addTask {
+  border: none;
+  background: transparent;
+}
+
+#addTask:focus {
+  outline: none;
+}
