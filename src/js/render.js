@@ -29,7 +29,7 @@ function renderTask(task, index) {
     taskItem.setAttribute('draggable', 'true');
     taskItem.innerHTML = `
          <input class="col-1 task-checkbox" type="checkbox" ${task.completed ? 'checked' : ''}>
-         <span class="col-9 task-description">${task.description}</span>
+         <input class="text col-9 task-description text-${task.index}" type="text" value ="${task.description}">
          <button class="col-2 text-muted option-Task">
             <i class="fas fa-ellipsis-v"></i>
          </button>

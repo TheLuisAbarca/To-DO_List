@@ -7,7 +7,7 @@ import '../css/bootstrap.min.css';
 import '../css/style.css';
 
 import { renderAllTasks } from './render';
-import { addListTask} from './TaskActions';
+import { addListTask, editTaskDesc} from './TaskActions';
 /*
 import { GetFromLocalStorage } from './LocalStorage';
 import StatusCompleted from './statusModule';
@@ -39,3 +39,4 @@ ItemsFirstDisplay();
 */
 renderAllTasks();
 addListTask();
+editTaskDesc();

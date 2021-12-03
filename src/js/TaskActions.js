@@ -33,6 +33,24 @@ function addListTask() {
         taskAdditionMethod(inputAddTask);
         event.preventDefault();
     });
-  };
+}
 
-export { addListTask };
+
+function editTaskDesc() {
+    const taskList = document.getElementById('task-list');
+    const inputs = document.querySelectorAll('.text');
+    inputs.forEach((input, index) => {
+      taskList.addEventListener('keydown', (e) => {
+        const { value } = e.target;
+        const condition = e.target.className.includes(`text-${index}`) && e.key === 'Enter' && value !== '';
+        if (condition) {
+          tasks[index].description = value;
+          taskList.innerHTML = '';
+          SetOnLocalStorage(tasks);
+          renderAllTasks();
+        }
+      });
+    });
+}
+
+export { addListTask, editTaskDesc };
