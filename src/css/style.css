@@ -24,7 +24,7 @@ li:nth-child(even) {
 } */
 
 button.option-Task {
-  cursor: pointer;
+  cursor: move;
 }
 
 button.reload {
