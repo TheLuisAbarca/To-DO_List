@@ -53,6 +53,19 @@ function editTaskDesc() {
     });
 }
 
+function deleteTask() {
+  const taskList = document.getElementById('task-list');
+  const deleteButtons = document.querySelectorAll('.delete');
+  deleteButtons.forEach((button, index) => {
+    button.addEventListener('click', (e) => {
+      tasks.splice(index, 1);
+      taskList.innerHTML = '';
+      SetOnLocalStorage(tasks);
+      renderAllTasks();
+    });
+  });
+}
+
 function clearAllCompleted() {
   const taskList = document.getElementById('task-list');
   const clearItems = document.getElementById('clr');
