@@ -77,4 +77,9 @@ function clearAllCompleted() {
   });
 }
 
-export { addListTask, editTaskDesc, clearAllCompleted, deleteTask };
+export {
+  addListTask,
+  editTaskDesc,
+  clearAllCompleted,
+  deleteTask,
+};

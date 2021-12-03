@@ -7,7 +7,9 @@ import '../css/bootstrap.min.css';
 import '../css/style.css';
 
 import { renderAllTasks } from './render';
-import { addListTask, clearAllCompleted, deleteTask, editTaskDesc } from './TaskActions';
+import {
+  addListTask, clearAllCompleted, deleteTask, editTaskDesc,
+} from './TaskActions';
 
 renderAllTasks();
 addListTask();
