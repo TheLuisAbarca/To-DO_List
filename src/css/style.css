@@ -24,7 +24,7 @@ li:nth-child(even) {
 } */
 
 button.option-Task {
-  cursor: pointer;
+  cursor: move;
 }
 
 button.reload {
@@ -54,4 +54,22 @@ li.row {
 
 .card-body {
   padding-bottom: 0 !important;
+}
+
+.text {
+  background-color: #fff;
+  border: none;
+}
+
+.text:focus {
+  outline: none;
+}
+
+#addTask {
+  border: none;
+  background: transparent;
+}
+
+#addTask:focus {
+  outline: none;
 }
