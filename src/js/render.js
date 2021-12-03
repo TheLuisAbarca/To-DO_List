@@ -19,9 +19,11 @@ function renderAllTasks() {
     let tasks = GetFromLocalStorage();
     taskList.innerHTML = '';
     tasks.forEach(renderTask);
+    SetOnLocalStorage(tasks);
 }
 
 function renderTask(task, index) {
+    task.index = index;
     const taskItem = document.createElement('li');
     taskItem.id = `task-${index}`;
     taskItem.className = 'task-item draggable row p-2 justify-content-center align-items-center border-top border-1';
