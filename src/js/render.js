@@ -5,6 +5,8 @@ const taskList = document.querySelector('#task-list');
 let newIndex = -1;
 let moveIndex = -1;
 
+const classbtnDeleteTask = "col-1 text-muted delete-Task border border border-1 rounded-pill d-flex justify-content-center";
+
 function ChangeTaskPosition() {
   if (moveIndex !== newIndex) {
     const tasks = GetFromLocalStorage();
@@ -47,7 +49,7 @@ function renderTask(task, index) {
   taskItem.innerHTML = `
          <input class="col-1 task-checkbox" type="checkbox" ${task.completed ? 'checked' : ''}>
          <input class="text col-9 task-description text-${task.index}" type="text" value ="${task.description}">
-         <button class="col-1 text-muted delete-Task border border border-1 rounded-pill">
+         <button class="${classbtnDeleteTask}">
           <i class="fas fa-trash-alt"> </i>
          </button>
          <button class="col-1 text-muted option-Task">
@@ -59,7 +61,6 @@ function renderTask(task, index) {
   taskItem.addEventListener('dragover', () => { newIndex = index; });
   taskItem.addEventListener('dragend', ChangeTaskPosition); // eslint-disable-line no-use-before-define
   taskItem.addEventListener('touchmove', (e) => {TouchMove(e, taskItem)});
-  //taskItem.addEventListener('touchstart', () => { moveIndex = index; });
   taskItem.addEventListener('touchend', TouchEnd(taskItem));
   taskList.appendChild(taskItem);
 }

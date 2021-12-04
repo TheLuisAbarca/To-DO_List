@@ -79,3 +79,7 @@ li.row {
   background: transparent;
 }
 */
+.task-description {
+  padding-left: 0;
+  padding-right: 0;
+}
