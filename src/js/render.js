@@ -5,7 +5,8 @@ const taskList = document.querySelector('#task-list');
 let newIndex = -1;
 let moveIndex = -1;
 
-const classbtnDeleteTask = "col-1 text-muted delete-Task border border border-1 rounded-pill d-flex justify-content-center";
+const classli = 'task-item draggable row pt-2 pb-2 justify-content-center align-items-center border-top border-1';
+const classbtnDeleteTask = 'col-1 text-muted delete-Task border border border-1 rounded-pill d-flex justify-content-center';
 
 function ChangeTaskPosition() {
   if (moveIndex !== newIndex) {
@@ -43,12 +44,12 @@ function renderTask(task, index) {
   task.index = index;
   const taskItem = document.createElement('li');
   taskItem.id = `task-${index}`;
-  taskItem.className = 'task-item draggable row p-2 justify-content-center align-items-center border-top border-1';
+  taskItem.className = classli;
   taskItem.setAttribute('data-index', task.index);
   taskItem.setAttribute('draggable', 'true');
   taskItem.innerHTML = `
          <input class="col-1 task-checkbox" type="checkbox" ${task.completed ? 'checked' : ''}>
-         <input class="text col-9 task-description text-${task.index}" type="text" value ="${task.description}">
+         <input class="text col-8 task-description text-${task.index}" type="text" value ="${task.description}">
          <button class="${classbtnDeleteTask}">
           <i class="fas fa-trash-alt"> </i>
          </button>
