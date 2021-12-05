@@ -7,14 +7,27 @@
   <title>To-DO List</title>
 <script defer src="index.bundle.js"></script></head>
 <body class="container">
-  <header class="row">
+  <header class="row pt-2 justify-content-center align-items-center">
+    To-Do List WebApp
   </header>
   <main class="row mt-4">
     <section class="col-12">
       <div class="card card-white">
         <div class="card-body">
             <div class="row pt-2 pb-2 justify-content-center align-items-center">
-                <h5 class="col-10">Today's To Do</h5>
+                <h5 class="col-4 d-flex justify-content-start align-items-center">Today's To Do</h5>
+                <div class="col-3">
+                  <div class="row justify-content-center align-items-center">
+                    <i class="fas fa-hashtag fa-xs col-6 h-0 w-50"></i>
+                    <span id="totalTasks" class="col-6"></span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="row justify-content-center align-items-center">
+                    <i class="fas fa-check fa-xs col-6 h-0 w-50 "></i>
+                    <span id="doneTasks" class="col-6"></span>
+                  </div>
+                </div>
                 <button class="col-2 reload text-muted border border-1 rounded-pill">
                     <i class="fas fa-sync"></i>   
                 </button>
@@ -22,7 +35,8 @@
             <div class="row pt-2 pb-2 border-top border-1 justify-content-center align-items-center">
                 <input id="addTask" type="text" name="task" class="col-10" placeholder="Add to your list...">
                 <button id="btnaddTask" class="col-2 text-muted border border-1 rounded-pill">
-                    <i class="fas fa-level-down-alt fa-rotate-90"></i>
+                    <i class="fas fa-level-down-alt fa-rotate-90 hidden-mobile"></i>
+                    <i class="fas fa-plus shown-mobile"></i>
                 </button>
             </div>
             <ul id="task-list" class="task-list">
@@ -37,5 +51,9 @@
       </div>
     </section>
   </main>
+  <footer class="d-flex flex-column justify-content-center align-items-center p-3">
+    <span>Copyright &copy; 2021</span>
+    <span>Luis Anghelo Abarca Villacis</span>
+  </footer>
 </body>
 </html>

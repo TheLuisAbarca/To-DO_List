@@ -1,5 +1,18 @@
 body {
   background-color: #f6f6f6;
+  overflow: hidden !important;
+}
+
+header {
+  height: 10vh;
+}
+
+main {
+  height: 70vh;
+}
+
+footer {
+  height: 20vh;
 }
 
 input#addTask {
@@ -16,6 +29,9 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  max-height: 510px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 /*
@@ -50,6 +66,7 @@ li.row {
   box-shadow: 0 5px 5px 4px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0 5px 5px 4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0 5px 5px 4px rgba(0, 0, 0, 0.75);
+  max-height: 680px !important;
 }
 
 .card-body {
@@ -57,12 +74,26 @@ li.row {
 }
 
 .text {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
 }
 
 .text:focus {
   outline: none;
+}
+
+.bg-edit {
+  background: #ffff0060;
+}
+
+.task-description {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.completed-line {
+  color: #ccc;
+  text-decoration: line-through;
 }
 
 #addTask {
@@ -73,13 +104,34 @@ li.row {
 #addTask:focus {
   outline: none;
 }
+
+#totalTasks {
+  font-size: small;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#doneTasks {
+  font-size: small;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /*
 .delete-Task {
   border: grey solid 1px;
   background: transparent;
 }
 */
-.task-description {
-  padding-left: 0;
-  padding-right: 0;
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .shown-mobile {
+    display: none;
+  }
 }
