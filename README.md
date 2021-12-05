@@ -38,7 +38,7 @@
 
 If you like, you can see a live demo of the site here:
 
-[Live Demo Link](https://theluisabarca.github.io/To-DO_List/)
+[Live Demo Link](https://theluisabarca.github.io/To-DO_List/dist)
 
 
 ## Getting Started
