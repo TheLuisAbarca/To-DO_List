@@ -55,12 +55,13 @@ function renderTask(task, index) {
   taskItem.setAttribute('data-index', task.index);
   taskItem.setAttribute('draggable', 'true');
   taskItem.innerHTML = `
+         <span class="col-2 d-flex justify-content-center align-items-center number-element">${task.index + 1}.-</span>
          <input class="col-1 task-checkbox" type="checkbox" ${task.completed ? 'checked' : ''}>
-         <input id="text-${task.index}" class="text col-8 task-description text-${task.index} ${task.completed ? 'completed-line' : ''}" type="text" value ="${task.description}">
+         <input id="text-${task.index}" class="text col-6 task-description text-${task.index} ${task.completed ? 'completed-line' : ''}" type="text" value ="${task.description}">
          <button id="delTask-${task.index}" class="${classbtnDeleteTask}">
           <i class="fas fa-trash-alt"> </i>
          </button>
-         <button class="col-1 text-muted option-Task">
+         <button class="col-1 text-muted option-Task d-flex justify-content-center">
           <i class="fas fa-arrows-alt"></i>
          </button>
      `;

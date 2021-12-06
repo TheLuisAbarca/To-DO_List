@@ -8,7 +8,12 @@
 </head>
 <body class="container">
   <header class="row pt-2 justify-content-center align-items-center">
-    To-Do List WebApp
+    <div class="col-2 d-flex justify-content-center align-items-center">
+      <i class="fas fa-clipboard-check fa-3x"></i>
+    </div>
+    <div class="col-10 d-flex justify-content-center align-items-center">
+      <h1 id="title" class="row justify-content-center align-items-center border rounded border-1 bg-white" style="margin-bottom: 0 !important;">To-Do List App</h1>
+    </div>
   </header>
   <main class="row mt-4">
     <section class="col-12">
@@ -18,13 +23,13 @@
                 <h5 class="col-4 d-flex justify-content-start align-items-center">Today's To Do</h5>
                 <div class="col-3">
                   <div class="row justify-content-center align-items-center">
-                    <i class="fas fa-hashtag fa-xs col-6 h-0 w-50"></i>
+                    <i class="fas fa-hashtag fa-xs col-6 h-0 w-50 d-flex justify-content-end" style="height: 20px; padding-right: 0 !important;"></i>
                     <span id="totalTasks" class="col-6"></span>
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="row justify-content-center align-items-center">
-                    <i class="fas fa-check fa-xs col-6 h-0 w-50 "></i>
+                    <i class="fas fa-check fa-xs col-6 h-0 w-50 d-flex justify-content-end" style="height: 20px; padding-right: 0 !important;"></i>
                     <span id="doneTasks" class="col-6"></span>
                   </div>
                 </div>
@@ -44,7 +49,7 @@
             <div id="clr" class="row pt-2 pb-2 justify-content-center align align-items-center text-muted">
               <div class="col-12 d-flex justify-content-center align-items-center">
                 <i class="fas fa-trash-alt"> </i>
-                 Clear all completed
+                <p>Clear all completed</p>
               </div>
             </div>
         </div>
@@ -52,8 +57,8 @@
     </section>
   </main>
   <footer class="d-flex flex-column justify-content-center align-items-center p-3">
-    <span>Copyright &copy; 2021</span>
-    <span>Luis Anghelo Abarca Villacis</span>
+    <span class="font-weight-bold">Copyright &copy; 2021</span>
+    <span class="font-weight-bold">Luis Anghelo Abarca Villacis</span>
   </footer>
 </body>
 </html>
