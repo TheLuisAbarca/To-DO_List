@@ -64,7 +64,7 @@ li.row {
 }
 */
 .card {
-  /*box-shadow: 0 5px 5px 4px rgba(0, 0, 0, 0.75);*/
+  /* box-shadow: 0 5px 5px 4px rgba(0, 0, 0, 0.75); */
   box-shadow: 4px 4px 10px gray;
   -webkit-box-shadow: 4px 4px 10px grey;
   -moz-box-shadow: 4px 4px 10px grey;
@@ -105,6 +105,12 @@ li.row {
   padding-right: 0 !important;
 }
 
+.fas.fa-hashtag.fa-xs,
+.fas.fa-check.fa-xs {
+  height: 20px;
+  padding-right: 0 !important;
+}
+
 span {
   font-weight: 500;
 }
@@ -116,6 +122,7 @@ span.font-weight-bold {
 #title {
   padding: 0.5rem;
   margin: 0.5rem;
+  margin-bottom: 0 !important;
 }
 
 #addTask {
@@ -154,7 +161,7 @@ span.font-weight-bold {
   font-size: 0.8rem;
   text-transform: uppercase;
   cursor: pointer;
-}*/
+} */
 
 div#clr > div:hover {
   text-shadow: 1px 1px 1px rgb(126, 126, 126);
