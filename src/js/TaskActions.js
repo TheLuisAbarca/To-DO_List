@@ -13,19 +13,20 @@ function taskAdditionMethod(element) {
   if (task) {
     const newTask = { index: tasks.length, description: task, completed: false };
     tasks.push(newTask);
-    clearItems();
-    SetOnLocalStorage(tasks);
-    renderAllTasks();
+    return tasks;
   }
-  element.value = '';
 }
 
 function addListTask() {
   const inputAddTask = document.getElementById('addTask');
   const btnAddTask = document.getElementById('btnaddTask');
   inputAddTask.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      taskAdditionMethod(inputAddTask);
+    if (event.key === 'Enter' && inputAddTask.value !== '') {
+      let temptasks = taskAdditionMethod(inputAddTask);
+      inputAddTask.value = '';
+      clearItems();
+      SetOnLocalStorage(temptasks);
+      renderAllTasks();
       event.preventDefault();
     }
   });
@@ -112,6 +113,7 @@ function clearAllCompleted() {
 }
 
 export {
+  taskAdditionMethod,
   addListTask,
   editTaskDesc,
   clearAllCompleted,
