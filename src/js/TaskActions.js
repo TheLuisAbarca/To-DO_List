@@ -56,18 +56,22 @@ function deleteUniqueTask(index) {
   return () => {
     const tasks = GetFromLocalStorage();
     tasks.splice(index, 1);
-    //SetOnLocalStorage(tasks);
-    //renderAllTasks();
+    SetOnLocalStorage(tasks);
+    renderAllTasks();
   };
+}
+
+function deleteTaskObject(index) {
+  const tasks = GetFromLocalStorage();
+  tasks.splice(index, 1);
+  return tasks;
 }
 
 //delete task DOM
 function deleteTaskDOM(index) {
-  return() => {
-    const parentTask = document.getElementById('task-list')
-    let taskChild = document.getElementById(`task-${index}`);
-    parentTask.removeChild(taskChild);
-  } 
+  const parentTask = document.getElementById('task-list')
+  let taskChild = document.getElementById(`task-${index}`);
+  parentTask.removeChild(taskChild);
 }
 
 function clearAllCompleted() {
@@ -90,5 +94,6 @@ export {
   editTaskDesc,
   clearAllCompleted,
   deleteUniqueTask,
+  deleteTaskObject,
   deleteTaskDOM,
 };

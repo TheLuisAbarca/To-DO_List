@@ -1,28 +1,7 @@
 import { GetFromLocalStorage, SetOnLocalStorage } from './LocalStorage.js';
 import {  renderTask } from './render.js';
 //import { taskAdditionMethod } from "./TaskActionsObjects";
-import { taskAdditionMethod, deleteTaskDOM, deleteUniqueTask } from "./TaskActions";
-
-/*
-
-const fakeLocalStorage = (function () {
-    let store = {};
-  
-    return {
-      getItem: function (key) {
-        return store[key] || null;
-      },
-      setItem: function (key, value) {
-        store[key] = value.toString();
-      },
-      removeItem: function (key) {
-        delete store[key];
-      },
-      clear: function () {
-        store = {};
-      }
-    };
-  })();*/
+import { taskAdditionMethod, deleteTaskDOM, deleteTaskObject } from "./TaskActions";
 
   const htmlTemplate = `
   <div>
@@ -55,6 +34,10 @@ class LocalStorageMock {
     removeItem(key) {
       delete this.store[key];
     }
+
+    getAll() {
+      console.log(this.store);
+    }
   }
   
 global.mockedlocalStorage = new LocalStorageMock;
@@ -65,54 +48,68 @@ describe("TaskActions", () => {
           value: fakeLocalStorage,
         });
     });*/
-    /**
-    * @jest-environment jsdom
-    */
-    test("should add a task to the list Object", () => {
-        let tasks = [];
+    describe("Add Tests", () => {
+      /**
+      * @jest-environment jsdom
+      */
+      test("should add a task to the list Object", () => {
+        let tasks = JSON.parse(mockedlocalStorage.getItem("tasks")) || [];
         const taskObjElement = {
             value: "Task 1 description",
         };
         tasks = taskAdditionMethod(taskObjElement);
         expect(tasks.length).toBe(1);
+      });
+
+      /**
+      * @jest-environment jsdom
+      */
+      test("should add a task to the list DOM", () => {
+          //mocking the localStorage 
+          let tasks = JSON.parse(mockedlocalStorage.getItem("tasks")) || [];
+          const basicBody = document.createElement('div');
+          basicBody.innerHTML = htmlTemplate;
+          document.body.appendChild(basicBody);
+          const taskElement = {
+            index: tasks.length,
+            description: "Task 1 description",
+            completed: false,
+          };
+          renderTask(taskElement, tasks.length);
+          const toDoList = document.querySelectorAll('#task-list li');
+          expect(toDoList).toHaveLength(1);
+      });
     });
 
-    /**
-    * @jest-environment jsdom
-    */
-    test("should add a task to the list DOM", () => {
-        //mocking the localStorage 
-        //let tasks = [];
-        /*let tasks = [
-          { index: 0, description: "Task 1 description", completed: false},
-          { index: 1, description: "Task 2 description", completed: false}
-        ];*/
-        //let tasks = GetFromLocalStorage();
-        let tasks = JSON.parse(mockedlocalStorage.getItem("tasks")) || [];
-        const basicBody = document.createElement('div');
-        basicBody.innerHTML = htmlTemplate;
-        document.body.appendChild(basicBody);
-        /*const btnAddTask = document.getElementById('btnaddTask');
-        console.log(btnAddTask);*/
-        const taskElement = {
-          index: tasks.length,
-          description: "Task 1 description",
-          completed: false,
-        };
-        renderTask(taskElement, tasks.length);
-        const toDoList = document.querySelectorAll('#task-list li');
-        expect(toDoList).toHaveLength(1);
-    });
+    describe("Delete Tests", () => {
+      /**
+      * @jest-environment jsdom
+      */
+       test("should remove a task to the list Object", () => {
+        const tasksListObject = [];
+        let task1 =  { index: 0, description: "Task 1 description", completed: false}
+        tasksListObject.push(task1);
+        mockedlocalStorage.setItem('task', JSON.stringify(tasksListObject));
+        let task2 =  { index: 1, description: "Task 2 description", completed: false}
+        tasksListObject.push(task2);
+        mockedlocalStorage.setItem('task', JSON.stringify(tasksListObject));
+        SetOnLocalStorage(tasksListObject);
+        const todo = deleteTaskObject(1);
+        mockedlocalStorage.setItem('task', JSON.stringify(todo));
+        const tasks = JSON.parse(mockedlocalStorage.getItem('task'));
+        expect(tasks.length).toBe(1);
+      });
 
-    test("should renmove a task to the list Object and DOM", () => {
-     
-      let task1 =  { index: 0, description: "Task 1 description", completed: false}
-      mockedlocalStorage.setItem('task', JSON.stringify(task1));
-      let task2 =  { index: 1, description: "Task 2 description", completed: false}
-      mockedlocalStorage.setItem('task', JSON.stringify(task2));
-      deleteUniqueTask(1);
-      const tasks = JSON.parse(mockedlocalStorage.getItem('task'));
-      expect(tasks.length).toHaveLength(1);
+      /**
+      * @jest-environment jsdom
+      */
+      test("should remove a task to the list DOM", () => {
+        //We know that the task has been added to the list from the previous test
+        //so we are going to delete it from the DOM.
+        deleteTaskDOM(0);
+        const toDoListAfterDelete = document.querySelectorAll('#task-list li');
+        expect(toDoListAfterDelete).toHaveLength(0);
+      });
     });
 });
 

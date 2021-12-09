@@ -78,7 +78,6 @@ function renderTask(task, index) {
   /* taskItem.addEventListener('touchmove', (e) => { TouchMove(e, taskItem); });
   taskItem.addEventListener('touchend', TouchEnd(taskItem)); */
   taskList.appendChild(taskItem);
-  //return taskItem;
 }
 
 function renderAllTasks() {
