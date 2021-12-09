@@ -1,7 +1,7 @@
 import { SetOnLocalStorage,GetFromLocalStorage } from './LocalStorage.js';
 import { renderTask } from './render.js';
 import { htmlTemplate, LocalStorageMock } from './toolsTest.js';
-import { mockchecked } from './part2.js';
+import { mockchecked, cleanObjects, clearAllCompleted } from './part2.js';
 import { taskAdditionMethod, deleteTaskDOM, deleteTaskObject } from './TaskActions';
 
 describe('Testing Part2 Task', () => {
@@ -29,6 +29,22 @@ describe('Testing Part2 Task', () => {
         test('Editing Task', () => {
             
         });
+      
+        describe('Testing the clear function', () => {
+            test('should clean all the tasks that are market', () => {
+            const objectsToClean = [ { index: 0, description: 'Task 1 description', completed: true }, 
+            { index: 1, description: 'Task 1 description', completed: false },
+            { index: 2, description: 'Task 1 description', completed: true },
+         ];
+            mockedlocalStorage.setItem('tasks', JSON.stringify(objectsToClean));
+            SetOnLocalStorage(objectsToClean);
+            const clean = cleanObjects();
+            expect(clean.length).toBe(1);
+          });
+        });
+           
+        
     });
+
 
 });

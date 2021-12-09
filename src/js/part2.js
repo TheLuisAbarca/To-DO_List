@@ -1,13 +1,20 @@
 import { SetOnLocalStorage,GetFromLocalStorage } from './LocalStorage.js';
-
+let tasks; 
 function mockchecked(obj) {
   const list = GetFromLocalStorage();
   if (obj.chkbxs.checked) {
     list[obj.id].completed = true;
   } else {
     list[obj.id].completed = false;
-  }
+  } 
   return list;
 }
 
-export { mockchecked };
+function cleanObjects() {
+  const tasks1 = GetFromLocalStorage();
+  tasks = tasks1.filter((task) => !task.completed);
+  return tasks;
+}
+
+
+export { mockchecked, cleanObjects };
