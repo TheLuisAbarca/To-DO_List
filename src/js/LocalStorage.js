@@ -3,7 +3,6 @@ function GetFromLocalStorage() {
   if (tasks) {
     return tasks;
   }
-  // return firstTasks;
   return [];
 }
 

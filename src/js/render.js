@@ -48,6 +48,7 @@ function TouchEnd(taskItem) {
 }
 */
 function renderTask(task, index) {
+  const taskList = document.querySelector('#task-list');
   task.index = index;
   const taskItem = document.createElement('li');
   taskItem.id = `task-${index}`;
