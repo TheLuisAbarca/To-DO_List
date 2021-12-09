@@ -1,8 +1,10 @@
 import { GetFromLocalStorage, SetOnLocalStorage } from './LocalStorage.js';
-import { renderAllTasks, renderTask } from './render.js';
+import {  renderTask } from './render.js';
 //import { taskAdditionMethod } from "./TaskActionsObjects";
-import { taskAdditionMethod, addListTask } from "./TaskActions";
+import { taskAdditionMethod, deleteTaskDOM, deleteUniqueTask } from "./TaskActions";
+
 /*
+
 const fakeLocalStorage = (function () {
     let store = {};
   
@@ -103,6 +105,14 @@ describe("TaskActions", () => {
     });
 
     test("should renmove a task to the list Object and DOM", () => {
-      
+     
+      let task1 =  { index: 0, description: "Task 1 description", completed: false}
+      mockedlocalStorage.setItem('task', JSON.stringify(task1));
+      let task2 =  { index: 1, description: "Task 2 description", completed: false}
+      mockedlocalStorage.setItem('task', JSON.stringify(task2));
+      deleteUniqueTask(1);
+      const tasks = JSON.parse(mockedlocalStorage.getItem('task'));
+      expect(tasks.length).toHaveLength(1);
     });
 });
+
