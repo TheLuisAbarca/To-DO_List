@@ -42,7 +42,7 @@ class LocalStorageMock {
 
 global.mockedlocalStorage = new LocalStorageMock();
 
-describe('TaskActions', () => {
+describe('TaskActions',  () => {
   /* beforeAll(() => {
         Object.defineProperty(window, 'localStorage', {
           value: fakeLocalStorage,
