@@ -1,7 +1,7 @@
 import { SetOnLocalStorage,GetFromLocalStorage } from './LocalStorage.js';
 import { renderTask } from './render.js';
 import { htmlTemplate, LocalStorageMock } from './toolsTest.js';
-import { mockchecked, cleanObjects, clearAllCompleted } from './part2.js';
+import { mockchecked, cleanObjects, editObjects, clearAllCompleted } from './part2.js';
 import { taskAdditionMethod, deleteTaskDOM, deleteTaskObject } from './TaskActions';
 
 describe('Testing Part2 Task', () => {
@@ -41,6 +41,17 @@ describe('Testing Part2 Task', () => {
             const clean = cleanObjects();
             expect(clean.length).toBe(1);
           });
+        });
+
+        describe('Testing for editing tasks', () =>{
+            test('Should test the editing task', () =>{
+                const objectsToEdit = [ { index: 0, description: 'Task 1 description', completed: true }, 
+             ];
+             mockedlocalStorage.setItem('tasks', JSON.stringify(objectsToEdit));
+            SetOnLocalStorage(objectsToEdit);
+            const editing = editObjects(index);
+            expect(editing.length).toBe(1);
+            });
         });
            
         

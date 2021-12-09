@@ -16,5 +16,11 @@ function cleanObjects() {
   return tasks;
 }
 
+function editObjects(index) {
+  const editTask = GetFromLocalStorage();
+  const inputs = document.getElementById(`text-${index}`);
+  tasks[index].description = inputs.value;
+  return tasks;
+}
 
-export { mockchecked, cleanObjects };
+export { mockchecked, cleanObjects, editObjects };
