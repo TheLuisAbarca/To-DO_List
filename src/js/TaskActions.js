@@ -22,7 +22,7 @@ function addListTask() {
   const btnAddTask = document.getElementById('btnaddTask');
   inputAddTask.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && inputAddTask.value !== '') {
-      let temptasks = taskAdditionMethod(inputAddTask);
+      const temptasks = taskAdditionMethod(inputAddTask);
       inputAddTask.value = '';
       clearItems();
       SetOnLocalStorage(temptasks);
@@ -67,10 +67,10 @@ function deleteTaskObject(index) {
   return tasks;
 }
 
-//delete task DOM
+// delete task DOM
 function deleteTaskDOM(index) {
-  const parentTask = document.getElementById('task-list')
-  let taskChild = document.getElementById(`task-${index}`);
+  const parentTask = document.getElementById('task-list');
+  const taskChild = document.getElementById(`task-${index}`);
   parentTask.removeChild(taskChild);
 }
 
@@ -85,8 +85,6 @@ function clearAllCompleted() {
     renderAllTasks();
   });
 }
-
-
 
 export {
   taskAdditionMethod,

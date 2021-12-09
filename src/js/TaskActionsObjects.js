@@ -1,4 +1,4 @@
-let tasks = [];
+const tasks = [];
 
 function taskAdditionMethod(element) {
   const task = element.value;
@@ -9,7 +9,6 @@ function taskAdditionMethod(element) {
     return tasks;
   }
 }
-
 
 export {
   taskAdditionMethod,
