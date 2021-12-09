@@ -15,6 +15,7 @@ function taskAdditionMethod(element) {
     tasks.push(newTask);
     return tasks;
   }
+  return false;
 }
 
 function addListTask() {

@@ -1,4 +1,4 @@
-import { GetFromLocalStorage, SetOnLocalStorage } from './LocalStorage.js';
+import { SetOnLocalStorage } from './LocalStorage.js';
 import { renderTask } from './render.js';
 // import { taskAdditionMethod } from "./TaskActionsObjects";
 import { taskAdditionMethod, deleteTaskDOM, deleteTaskObject } from './TaskActions';
@@ -40,14 +40,9 @@ class LocalStorageMock {
   }
 }
 
-global.mockedlocalStorage = new LocalStorageMock();
+describe('TaskActions', () => {
+  const mockedlocalStorage = new LocalStorageMock();
 
-describe('TaskActions',  () => {
-  /* beforeAll(() => {
-        Object.defineProperty(window, 'localStorage', {
-          value: fakeLocalStorage,
-        });
-    }); */
   describe('Add Tests', () => {
     /**
       * @jest-environment jsdom
