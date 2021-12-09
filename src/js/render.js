@@ -48,6 +48,7 @@ function TouchEnd(taskItem) {
 }
 */
 function renderTask(task, index) {
+  const taskList = document.querySelector('#task-list');
   task.index = index;
   const taskItem = document.createElement('li');
   taskItem.id = `task-${index}`;
@@ -77,6 +78,7 @@ function renderTask(task, index) {
   /* taskItem.addEventListener('touchmove', (e) => { TouchMove(e, taskItem); });
   taskItem.addEventListener('touchend', TouchEnd(taskItem)); */
   taskList.appendChild(taskItem);
+  //return taskItem;
 }
 
 function renderAllTasks() {

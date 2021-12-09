@@ -1,8 +1,8 @@
 import { GetFromLocalStorage, SetOnLocalStorage } from './LocalStorage.js';
-import { renderAllTasks } from './render.js';
+import { renderAllTasks, renderTask } from './render.js';
 //import { taskAdditionMethod } from "./TaskActionsObjects";
-import { taskAdditionMethod } from "./TaskActions";
-
+import { taskAdditionMethod, addListTask } from "./TaskActions";
+/*
 const fakeLocalStorage = (function () {
     let store = {};
   
@@ -20,15 +20,49 @@ const fakeLocalStorage = (function () {
         store = {};
       }
     };
-  })();
+  })();*/
+
+  const htmlTemplate = `
+  <div>
+    <input id="addTask" type="text" name="task" placeholder="Add to your list...">
+    <button id="btnaddTask">
+      <i class="fas fa-level-down-alt fa-rotate-90 hidden-mobile"></i>
+      <i class="fas fa-plus shown-mobile"></i>
+    </button>
+  </div>
+  <div>
+      <ul id="task-list"></ul>
+  </div>`;
+class LocalStorageMock {
+    constructor() {
+      this.store = {};
+    }
+  
+    clear() {
+      this.store = {};
+    }
+  
+    getItem(key) {
+      return this.store[key] || null;
+    }
+  
+    setItem(key, value) {
+      this.store[key] = String(value);
+    }
+  
+    removeItem(key) {
+      delete this.store[key];
+    }
+  }
+  
+global.mockedlocalStorage = new LocalStorageMock;
 
 describe("TaskActions", () => {
-     beforeAll(() => {
+    /*beforeAll(() => {
         Object.defineProperty(window, 'localStorage', {
           value: fakeLocalStorage,
         });
-    });
-    
+    });*/
     /**
     * @jest-environment jsdom
     */
@@ -40,31 +74,35 @@ describe("TaskActions", () => {
         tasks = taskAdditionMethod(taskObjElement);
         expect(tasks.length).toBe(1);
     });
-    /*
-    it("should add a task to the list DOM", () => {
-        const task = {
-            index: 1,
-            description: "Task 1 description",
-            completed: false
+
+    /**
+    * @jest-environment jsdom
+    */
+    test("should add a task to the list DOM", () => {
+        //mocking the localStorage 
+        //let tasks = [];
+        /*let tasks = [
+          { index: 0, description: "Task 1 description", completed: false},
+          { index: 1, description: "Task 2 description", completed: false}
+        ];*/
+        //let tasks = GetFromLocalStorage();
+        let tasks = JSON.parse(mockedlocalStorage.getItem("tasks")) || [];
+        const basicBody = document.createElement('div');
+        basicBody.innerHTML = htmlTemplate;
+        document.body.appendChild(basicBody);
+        /*const btnAddTask = document.getElementById('btnaddTask');
+        console.log(btnAddTask);*/
+        const taskElement = {
+          index: tasks.length,
+          description: "Task 1 description",
+          completed: false,
         };
-        document.body.innerHTML = `
-            <div>
-                <ul id="task-list"></ul>
-            </div>`;
-        addListTask();
-        expect(addListTask(task)).toEqual(expectedAction);
+        renderTask(taskElement, tasks.length);
+        const toDoList = document.querySelectorAll('#task-list li');
+        expect(toDoList).toHaveLength(1);
     });
-    it("should delete a task from the list", () => {
-        const task = {
-        id: 1,
-        name: "Task 1",
-        description: "Task 1 description",
-        status: "todo"
-        };
-        const expectedAction = {
-        type: "DELETE_UNIQUE_TASK",
-        task
-        };
-        expect(deleteUniqueTask(task)).toEqual(expectedAction);
-    });*/
+
+    test("should renmove a task to the list Object and DOM", () => {
+      
+    });
 });

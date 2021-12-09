@@ -60,45 +60,6 @@ function deleteUniqueTask(index) {
     renderAllTasks();
   };
 }
-/*
-function deleteUniqueTask(index) {
-  const taskList = document.getElementById('task-list');
-  const tasks = GetFromLocalStorage();
-  console.log(tasks);
-  //tasks.splice(index, 1);
-  let tasksTemp = tasks.filter((task) => task.index !== index);
-  taskList.innerHTML = '';
-  SetOnLocalStorage(tasks);
-}
-*/
-/* function deleteUniqueTask() {
-  window.addEventListener('click', (e) => {
-    const taskList = document.getElementById('task-list');
-    console.log(e.target);
-    if (e.target && e.target.className.includes('delete-Task')) {
-      const id = parseInt(e.target.parentNode.id, 10);
-      tasks = tasks.filter((task) => task.index !== id);
-      taskList.innerHTML = '';
-      SetOnLocalStorage(tasks);
-      renderAllTasks();
-    }
-  });
-} */
-
-// eslint-disable-next-line no-unused-vars
-/* function deleteTask() {
-  const taskList = document.getElementById('task-list');
-  const deleteButtons = document.querySelectorAll('.delete-Task');
-  deleteButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      const tasks = GetFromLocalStorage();
-      const tasksTemp = tasks.filter((task) => task.index !== index);
-      taskList.innerHTML = '';
-      SetOnLocalStorage(tasksTemp);
-      renderAllTasks();
-    });
-  });
-} */
 
 function clearAllCompleted() {
   const taskList = document.getElementById('task-list');
